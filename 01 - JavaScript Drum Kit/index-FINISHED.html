@@ -58,22 +58,28 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+ /* The button will get the class of playing for the transition time(1.1s) 
+and then its effect will be removed */
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
+    if (e.propertyName !== 'transform') return; 
     e.target.classList.remove('playing');
   }
 
   function playSound(e) {
+     //Get the key from the audio HTML
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    if (!audio) return; // stop the function from running all together
 
+    // Add the key effect from CSS
     key.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
   }
 
   const keys = Array.from(document.querySelectorAll('.key'));
+  /* Each key get its transition ended by this function,
+so the CSS effect don't stay up forever */
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown', playSound);
 </script>

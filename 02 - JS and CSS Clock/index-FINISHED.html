@@ -65,6 +65,7 @@
       transform-origin: 100%;
       transform: rotate(90deg);
       transition: all 0.05s;
+          /* Clock hands nice transition effect */
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 </style>
@@ -75,6 +76,7 @@
   const hourHand = document.querySelector('.hour-hand');
 
   function setDate() {
+    // Grab the date
     const now = new Date();
 
     const seconds = now.getSeconds();
